@@ -353,16 +353,27 @@ Bhaskar Ganesh		35.154.166.0
 MADHUSHREE		13.234.136.75	
 
 
-User Name - ec2-user
-Key - https://www.devopsschool.com/notes/docker/2019/
-PPK - 	rajesh-mumbai.ppk
-How to use putty?
 
+Step 1 - 
 How to download putty
 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
+Step 2 - Login
+User Name - ec2-user
+Key - https://www.devopsschool.com/notes/docker/2019/
+PPK - 	rajesh-mumbai.ppk
+
 Step5 and Step 6 -
 https://www.devopsschool.com/blog/how-to-login-linux-server-of-aws-from-windows-using-putty/
+
+Step 3 - Install Docker
+
+Step 4 - Lifecycle of Container..
+
+
+
+
+
 
 
 
