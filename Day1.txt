@@ -443,6 +443,137 @@ What is Container?
   111  history
 
 
+LifeCycle of Container?
+================================
+Create -> Start -> Stop -> Restart -> Kill -> Start -> Pause -> Unpause -> Stop -> Remove
+================================
+
+
+
+Run = Create -> Start -> Become
+run -d == Create -> Start
+==============================================================================
+PM is running 			VM is running			Container is running
+as long as			as long as 			as long as   
+PID 1 is running		PID 1 is running		PID 1 is running
+
+
+PID 1 - systemd			PID 1 - systemd			PID 1 - ANything
+
+=============================================================================
+  119  docker ps
+  120  docker exec 3fc4b677ed8e ps -eaf
+  121  clear
+  122  docker ps -a
+  123  docker run jenkins
+  124  clear
+  125  docker ps -a
+  126  clear
+  127  docker run -d jenkins
+  128  docker ps
+  129  docker ps -a
+  130  clear
+  131  ls
+  132  clear
+  133  ls
+  134  docker images
+  135  clear
+  136  echo $SHELL
+  137  clear
+  138  docker images
+  139  docker run ubuntu
+  140  docker images
+  141  docker ps
+  142  clear
+  143  docker pss
+  144  docker ps
+  145  docker ps -a
+  146  clear
+  147  ls
+  148  docker run -it  ubuntu
+  149  docker ps -a
+  150  clear
+  151  docker run -it  ubuntu
+  152  docker ps -a
+  153  clear
+  154  docker run -itd  ubuntu
+  155  docker ps
+  156  echo $SHELL
+  157  clear
+
+================================
+How to use container?
+- getting inside container
+	- exec
+		Will execute an executables inside a container if executables  found.
+		If you execute with an exec of /bin/bash in interactive(-it) - you can go inside container.
+ 158  history
+  159  clear
+  160  docker ps
+  161  docker exec 3b54bc45b751 ls
+  162  docker exec 3b54bc45b751 ps -eaff
+  163  docker exec 3b54bc45b751 df
+  164  clear
+  165  docker exec 3b54bc45b751 top
+  166  docker exec 3b54bc45b751 free
+  167  docker exec 3b54bc45b751 ip a
+  168  docker exec 3b54bc45b751 raju
+  169  clear
+  170  docker ps
+  171  docker exec -it 3b54bc45b751 /bin/bash
+  172  docker ps
+  173  clear
+  174  docker exec -it 3b54bc45b751 /bin/bash
+  175  docker exec -it 3b54bc45b751 /bin/bash
+  176  clear
+
+
+	- attach
+		When you attached - IT get ATTACHED TO PID 1.
+
+- Access a APP which is running using http
+
+ 185  docker attach 3b54bc45b751
+  186  clear
+  187  docker ps
+  188  docker attach cb24d8b5994c
+  189  clear
+  190  docker ps
+  191  docker attach c8a37773cae4
+  192  docker ps
+  193  clear
+  194  docker ps
+  195  docker attach 3fc4b677ed8e
+  196  docker ps
+  197  clear
+  198  ls
+  199  docker ps
+  200  docker inspect 637f85d438b5 | grep -i ip
+  201  clear
+  202  curl http://172.17.0.3
+  203  curl http://172.17.0.3:8080
+  204  clear
+  205  ifconfig
+  206  clear
+  207  curl http://172.17.0.3:8080
+  208  clear
+  209  docker ps
+  210  docker run -d jenkins
+  211  docker run -d -p 8080:8080 jenkins
+  212  docker ps
+  213  docker stop 637f85d438b5 89e930090219
+  214  clear
+  215  docker ps
+  216  docker run -d -p 8080:8080 jenkins
+  217  docker run -d -p 8090:8080 jenkins
+  218  docker ps
+
+
+
+How to come out of container without exitting -- safely?
+CONTROL + P + Q
+
+
 
 
 
