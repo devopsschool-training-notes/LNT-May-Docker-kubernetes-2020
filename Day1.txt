@@ -1,0 +1,373 @@
+Rajesh Kumar
+=======================
+9:30 AM - 5:30 PM
+First Break time - 11:00 AM
+Second Break time - 3.30 PM
+Lunch time - 1:pm - 1:45 PM
+=============================
+Training - 
+	Docker
+	Kubernetes
+Day 1 & Day 2 - Docker
+Day 3 - 4 -5 - --- Kubernetes
+===================================
+Demo - Cloud
+Lab - Cloud
+===================================
+TEST
+===================================
++91 8105843520
+===================================
+
+What is Docker?
+=========================
+	Container mgmt tool
+	From Docker
+	by Soloman Hykes
+	Release
+		Community Edition
+		Enterprise Edition
+	https://www.devopsschool.com/blog/difference-between-docker-community-edition-ce-vs-docker-enterprise-edition-ee-in-2020/
+	https://www.devopsschool.com/blog/what-is-docker-enterprise-3-0-detailed-exaplanations/
+	Version
+		19.X
+	Written in GOlang
+	Helping to overcome a wastage of 
+				CPU
+				RAM
+				Storage
+				Lice cost.
+	at Data center.
+
+What is tool?
+	to save time
+	to improve effi*
+	to reduce cost.
+
+What is Container?
+=========================
+	Collection of lib for running APP indep...
+	Usersapce with 
+		their own 	NET
+				PMAP
+				MOUNt
+				Powered by Docker
+						takes from
+							Kernal
+							Has
+							Namespace
+								NET		ONE
+								PMAP		ONE
+								MNT		ONE
+								USER		MANY
+							Cgroups
+								manages CPU and RAM
+							Capability
+								Manages your access.		
+
+
+30 years from now
+=====================================
+	How/Where to run App?
+	How to reduce a cost of runnng app further?
+
+PHYSCIAL --->  Virtual Machine
+80% Wastage  --> 20% Wastage
+
+CPU
+RAM
+STORAGE
+
+100 Server X 80% === Wastage
+----------------------------
+Why we RUN APP in Multiple Machine?
+
+4 GB - 2 CPU ---20 Machine
+80 GB - 40 GB -----1 Machine
+		Availability
+		Scalability
+		Security
+=============================================================
+Lets go into basics
+=================================
+How Any App Runs?
+What are the component required in Compute unit to run app?
+
+Qs.
+How many mount you see in ONE OS? - ONE
+How many network you see in ONE OS? - ONE
+How many process Map you see in ONE OS? ONE
+How many user space you can get in ONE OS? - ANY
+=====================================================
+OS -> kernal has lib
+		Namespace
+			NET		ONE
+			PMAP		ONE
+			MNT		ONE
+			USER		MANY
+		Cgroups
+			manages CPU and RAM
+		Capability
+			Manages your access.
+================================================
+WHAT IS PC?
+	PERSONAL COMPUTING
+==========================================================================
+KERNAL
+	LINUX - OS - Free
+	IOS --> VM 
+		Docker for windows
+				WIN - VM - HyperV
+				Linux - VM - VirtualBox
+		Docker for Mac
+				Linux - VM - VirutalBox	
+	Windows - 
+		WIn 2019
+		Directly on OS.
+
+============================================================================
+How docker works!!!!
+================================
+Docker Architecture?
+
+human -> docker client ------REST ---> Docker Deamon ---> ContainerD --> RUNC --> Kernal
+         ---------------------Docker Engine------------------------->
+
+
+Components of Dockers
+==============================
+Docker Engine
+Docker Image
+	Whatever you see inside a container
+	ROOTFS --> USERFS
+
+WINDOWS ----> USEFS
+
+What is filesystem?
+BOOTFS --> ROOTFS --> USERFS
+   KERNAL-->
+
+Docker Registry and repos
+	github      repos
+	
+	TYPES
+		PUBLIC
+			hub.docker.com
+				repos --> Image
+			google registry
+		PVT
+			nexus
+			artifactory
+Docker Container
+	When you run Image
+	- USER SPACE
+		MOUNTED with Image
+		ONE PMAP
+		ONE Network
+=========================================================================
+How to install Docker?
+- 13.234.136.75
+- ec2-user
+Key
+
+https://www.devopsschool.com/tutorial/docker/install-config/index.html
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+
+DOCKER NEEDS 
+	root to access Kernal
+	Any user who is part of group called "Docker"
+
+
+
+
+
+  1  clear
+    2  clear
+    3  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    4  clear
+    5  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    6  sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    7  sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+    8  sudo yum install -y docker-ce
+    9  sudo systemctl enable docker
+   10  clear
+   11  docker info
+   12  sudo systemctl start docker
+   13  docker info
+   14  cler
+   15  clear
+   16  ls
+   17  history
+===========================================================
+[root@ip-172-31-19-182 ec2-user]# docker info
+Client:
+ Debug Mode: false
+
+Server:
+ Containers: 0
+  Running: 0
+  Paused: 0
+  Stopped: 0
+ Images: 0
+ Server Version: 19.03.8
+ Storage Driver: overlay2
+  Backing Filesystem: <unknown>
+  Supports d_type: true
+  Native Overlay Diff: true
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 7ad184331fa3e55e52b890ea95e65ba581ae3429
+ runc version: dc9208a3303feef5b3839f4323d9beb36df0a9dd
+ init version: fec3683
+ Security Options:
+  seccomp
+   Profile: default
+ Kernel Version: 3.10.0-862.el7.x86_64
+ Operating System: Red Hat Enterprise Linux Server 7.5 (Maipo)
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 1
+ Total Memory: 1.794GiB
+ Name: ip-172-31-19-182.ap-south-1.compute.internal
+ ID: UONT:EU24:ETIV:Q6E6:JFTB:B5PI:EEKP:RKRE:NKET:G22T:INOO:JYPD
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+====================================================================================
+Workflow in Docker?
+========================================
+human ---> client --> deamon --> Check Do i have a Image in Local Registry
+				If present - Create a container
+				If not present - Download from Registry into Local Registry and create
+
+LifeCycle of Container?
+================================
+Create -> Start -> Stop -> Restart -> Kill -> Start -> Pause -> Unpause -> Stop -> Remove
+================================
+Tomcat
+Ubuntu
+Kafqa
+SonarQube
+mysqlMexus
+Jenkins
+gitlab
+Spark
+SPringboot
+Eurkea
+AndStu
+Cas*
+ELK
+Owsap Sonar
+
+
+18  clear
+   19  docker version
+   20  clear
+   21  docker info
+   22  clear
+   23  which docker
+   24  ps -eaf | grep docker
+   25  clear
+   26  docker info
+   27  clear
+   28  docker images\
+   29  docker images
+   30  docker pull jenkins
+   31  clear
+   32  docker images
+   33  docker create jenkins
+   34  docker ps
+   35  docker ps -a
+   36  docker start d7e9d55ca50b
+   37  docker ps -a
+   38  docker stop d7e9d55ca50b
+   39  clear
+   40  docker ps -a
+   41  docker restart d7e9d55ca50b
+   42  docker ps -a
+   43  clear
+   44  docker ps
+   45  docker kill d7e9d55ca50b
+   46  docker ps -a
+   47  clear
+   48  docker ps
+   49  docker ps -a
+   50  docker start  d7e9d55ca50b
+   51  docker p s-a
+   52  docker ps -a
+   53  clear
+   54  docker pause d7e9d55ca50b
+   55  docker ps -a
+   56  docker ubnpause d7e9d55ca50b
+   57  docker unpause d7e9d55ca50b
+   58  docker ps -a
+   59  docker stop d7e9d55ca50b
+   60  docker ps -a
+   61  docker rm d7e9d55ca50b
+   62  clear
+   63  docker ps -a
+   64  history
+
+
+
+LNT-May-Docker-kubernetes-2020
+L & T - May - Docker - Kubernetes -2020
+
+
+
+Ashwin Atri	13.234.38.108
+
+Arul jobin	13.234.117.193
+Ajay Katke	13.127.54.146
+Siddharth Sahoo	13.233.9.50
+
+phani priyank	13.235.113.99
+Tanishq Singh	13.234.113.226
+Rajesh M	13.233.58.173	
+Pradeep Thalla	3.6.88.127
+
+Mayank Gwal	13.232.181.64
+Gunavadhi A S	52.66.195.79
+VINAY N		52.66.74.173
+Santhosh P Sonar	13.235.238.33
+Jahnavi Manne		35.154.208.158
+P.Usha			13.233.250.130
+Hari Krishna Mareedu	13.234.226.215
+Mulayam singh yadav	15.206.123.182
+Amruta Babbannavar	13.233.42.48
+Srikanta Pradhan	13.233.130.93
+Bhaskar Ganesh		35.154.166.0
+
+User Name - ec2-user
+Key - https://www.devopsschool.com/notes/docker/2019/
+PPK - 	rajesh-mumbai.ppk
+How to use putty?
+
+How to download putty
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+Step5 and Step 6 -
+https://www.devopsschool.com/blog/how-to-login-linux-server-of-aws-from-windows-using-putty/
+
+
+
+
+
+
+
+
+
+
