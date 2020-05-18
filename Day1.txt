@@ -370,14 +370,77 @@ Step 3 - Install Docker
 
 Step 4 - Lifecycle of Container..
 
+==============================================
+Lets Proof it.
+==============================================
+What is Container?
+=========================
+	Collection of lib for running APP indep...
+	Usersapce with 
+		their own 	NET
+				PMAP
+				MOUNt
+				Powered by Docker
+						takes from
+							Kernal
+							Has
+							Namespace
+								NET		ONE
+								PMAP		ONE
+								MNT		ONE
+								USER		MANY
+							Cgroups
+								manages CPU and RAM
+							Capability
+								Manages your access.		
 
 
-
-
-
-
-
-
+  66  docker ps
+   67  ps -eaf | grep docker
+   68  docker ps -a
+   69  clear
+   70  docker create jenkins
+   71  docker ps -a
+   72  docker start 637f85d438b5
+   73  docker ps -a
+   74  clear
+   75  ls
+   76  docker ps
+   77  ps -eaf | grep docker
+   78  clear
+   79  ls
+   80  clear
+   81  docker ps
+   82  docker inspect 637f85d438b5
+   83  docker ps
+   84  clear
+   85  docker ps
+   86  docker inspect 89e930090219
+   87  ping 172.17.0.2
+   88  clear
+   89  ps -eaf
+   90  clear
+   91  ls
+   92  docker ps
+   93  docker exec 637f85d438b5 ps -eaf
+   94  docker exec 89e930090219 ps -eaf
+   95  clear
+   96  docker ps
+   97  docker exec 637f85d438b5 ls /
+   98  docker ps
+   99  clear
+  100  docker exec 637f85d438b5 ls /opt
+  101  docker exec 89e930090219 ls /opt
+  102  docker exec 637f85d438b5 touch /opt/raj1.txt
+  103  docker exec 637f85d438b5 touch /tmp/raj1.txt
+  104  docker exec 637f85d438b5 ls /tmp/
+  105  docker exec 89e930090219 touch /tmp/raj1.txt
+  106  docker exec 89e930090219 ls /tmp/
+  107  docker exec 89e930090219 touch /tmp/raj2.txt
+  108  clear
+  109  docker exec 89e930090219 ls /tmp/
+  110  docker exec 637f85d438b5 ls /tmp/
+  111  history
 
 
 
