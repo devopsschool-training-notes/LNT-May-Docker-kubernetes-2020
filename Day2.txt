@@ -279,20 +279,72 @@ Step 6 - docker push
 
 
 Method 2 - Using Dockerfile
+=========================================
+
+INTRUCTIONS	PARAM
+
+FROM ubuntu
+MAINTAINER Rajesh Kumar Devops@rajeshkumar.xyz
+RUN apt-get update
+RUN apt-get install git -y
+#RUN apt-get install apache2 -y fdfsdfdfsdfsd
+RUN apt-get install
+COPY index.html /var/www/html
+ENV MY_VAR RAJESHKUMAR
+
+=================================
+RULES of Dockerfile
+- EVERY LINE of Dockerfile create one LAYER
+- EACH LAYER get created based on FROM
+
+FROM ubuntu
+MAINTAINER Rajesh Kumar Devops@rajeshkumar.xyz
+RUN touch /opt/rajesh1.txt
+RUN touch /opt/rajesh2.txt
+RUN touch /opt/rajesh3.txt
 
 
+====================================
+docker build -t nameoftheimage .
+
+docker build -t nameoftheimage -f docfile .
+
+docker run -d -p 8080:8080 -p 50000:50000 jenkins
+
+docker run -d -P jenkins
+
+# for main web interface:
+EXPOSE ${http_port}
+
+# will be used by attached slave agents:
+EXPOSE ${agent_port}
+================================================
+How to make/set PID 1??
+
+CMD
+or
+ENTRYPOINT
+or
+BOTH
 
 
+CMD Vs ENTRYPOINT
+===========================
+CMD 
+		CAN BE CHANGED DURING RUN TIME.
+ENTRYPOINT
+		CAN NOT BE CHANGED DURING RUN TIME.
 
+When you provide CMD to ENTRYPOINT
+			$ ENTRYPOINT CMD 
 
+	
+	
+	/bin/tini -- /usr/local/bin/jenkins.sh
+	docker run jenkins ls
+	/bin/tini -- /usr/local/bin/jenkins.sh ls
+===============================================
 
-
-
-
-
-
-
-
-
-
+aSSIGNMENT
+https://www.devopsschool.com/tutorial/docker/dockerfile/dockerfile-example-sample-lab.html
 
