@@ -1,0 +1,153 @@
+13.235.95.21
+================================
+13.235.95.21
+
+
+What is Docker?
+Why Docker?
+What is Container?
+How Docker Works? Architecture?
+Docker Workflow?
+Docker Components?
+Container LifeCycle?
+Container Behaviours?
+How to consume containers?
+===============================
+===============================
+https://www.devopsschool.com/tutorial/docker/commands
+
+
+cp
+diff
+	Changed
+	added
+	removed
+port
+rename
+
+ 1021  docker run -itd ubuntu
+ 1022  docker ps
+ 1023  clear
+ 1024  ls
+ 1025  ll
+ 1026  touch devopsschool.txt
+ 1027  ls
+ 1028  docker ps
+ 1029  docker cp devopsschool.txt a93c94492306:/opt
+ 1030  docker exec a93c94492306 ls /opt
+ 1031  rls
+ 1032  ls
+ 1033  rm -rf devopsschool.txt
+ 1034  clear
+ 1035  ls
+ 1036  docker cp a93c94492306:/opt/devopsschool.txt .
+ 1037  ls
+ 1038  docker ps
+ 1039  docker diff a93c94492306
+ 1040  docker ps
+ 1041  docker attach a93c94492306
+ 1042  clear
+ 1043  docker ps
+ 1044  docker diff a93c94492306
+ 1045  clear
+ 1046  ls
+ 1047  docker ps
+ 1048  docker port a93c94492306
+ 1049  docker run -d -p 8080:8080 jenkins
+ 1050  docker ps
+ 1051  docker port e747c2e4415c
+ 1052  clear
+ 1053  docker ps
+ 1054  docker rename e747c2e4415c jenkins
+ 1055  docker ps
+ 1056  docker run -itd --name raju ubuntu
+ 1057  docker ps
+ 1058  history
+
+
+update	Update configuration of one or more containers
+wait	Block until one or more containers stop, then print their exit codes
+ - Google.com
+ - docker help
+ - R & D
+
+
+logs	Any logs generate by PID 1 executables
+ps	List containers
+stats	Display a live stream of container(s) resource usage statistics
+top	Display the running processes of a container
+events	Get real time events from the server
+
+ 1061  l
+ 1062  docker ps
+ 1063  docker logs e747c2e4415c
+ 1064  docker ps
+ 1065  clear
+ 1066  docker ps
+ 1067  docker logs 22542b113a86
+ 1068  docker logs a93c94492306
+ 1069  docker ps
+ 1070  clear
+ 1071  docker ps
+ 1072  clear
+ 1073  docker stats
+ 1074  docker stats 22542b113a86
+ 1075  docker help run
+ 1076  clear
+ 1077  docker run -itd -m 200M ubuntu
+ 1078  docker stats
+ 1079  docker stats
+ 1080  docker ps
+ 1081  clear
+ 1082  ls
+ 1083  ps -eaf | grep docker
+ 1084  docker ps
+ 1085  clear
+ 1086  docker top
+ 1087  docker ps
+ 1088  docker top abd8bfa242fa
+ 1089  clear
+ 1090  ps -eaf | grep 5383
+ 1091  ps -eaf | grep 771
+ 1092* cle
+ 1093  ps -eaf
+ 1094  clear
+ 1095  clear
+ 1096  ps -eaf | grep docker
+ 1097  docker ps
+ 1098  docker top abd8bfa242fa
+ 1099  clear
+
+ 1101  clear
+ 1102  docker events
+ 1103  docker events
+
+create|run
+		memory		DONE	
+		network		
+		volume
+		port		DONE
+		env
+
+
+Ashwin Atri			52.66.211.181
+Arul jobin			15.206.173.9	
+Ajay Katke			15.206.82.120
+Siddharth Sahoo			13.235.114.174
+phani priyank			13.235.27.15
+Tanishq Singh			13.233.183.158
+Rajesh M			13.127.244.4
+Pradeep Thalla			13.234.111.134
+Mayank Gwal			13.127.244.94
+Gunavadhi A S			15.206.91.127
+VINAY N				3.6.36.101
+Santhosh P Sonar		13.233.132.87
+Jahnavi Manne			13.126.11.201
+P.Usha				13.233.54.203	
+Hari Krishna Mareedu		13.126.245.37	
+Mulayam singh yadav		35.154.235.93	
+Amruta Babbannavar		13.232.4.236
+Srikanta Pradhan		13.235.17.13
+Bhaskar Ganesh			13.235.16.189
+MADHUSHREE			13.235.95.21	
+
