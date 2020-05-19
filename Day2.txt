@@ -170,6 +170,123 @@ dcoker rmi docker images
 /var/lib/docker/overlay2
 df -kh
 watch ls
+du -h
+du -s
+du -sh
+===============================
+How to Create Images?
+===============================
+Method 1  - Using Existing Container
+
+
+
+  1  apt-get install git
+    2  apt-get update
+    3  clear
+    4  apt-get install git
+    5  git
+    6  apt-get install git
+    7  git
+    8  apt-get install apache
+    9  apt-get install apache2
+   10  which apache2
+   11  which git
+   12  service
+   13  service start apache2
+   14  service apache2 start
+   15* ps -eaf | grep apach
+   16  service apache2 enable
+   17  systemctl enable apache2
+   18  apt-get install systemctl
+   19  systemctl enable apache2
+   20  ps -eaf | grep apache
+   21  curl http://localhost
+   22  apt-get install curl
+   23  curl http://localhost
+   24  history
+
+
+
+ 1242  docker commit -m"git-up-curl-apache-systemctl" -a"rajesh Kumar" 84b731f9917c git-up-curl-apache-systemctl
+ 1243  docker images
+ 1244  docker history ubuntu
+ 1245  docker history git-up-curl-apache-systemctl
+ 1246  clear
+ 1247  docker images
+ 1248  docker run -itd git-up-curl-apache-systemctl
+ 1249  docker ps
+ 1250  docker inspect git-up-curl-apache-systemctl
+ 1251  clear
+ 1252  docker ps
+ 1253  docker inspect 003071a3fdf7
+ 1254  clear
+ 1255  curl http://172.17.0.3
+ 1256  docker [s
+ 1257  clear
+ 1258  docker ps
+ 1259  docker attach 003071a3fdf7
+
+
+How to Share a Images?
+===========================
+- Using Tar Ball
+
+1264  docker images
+ 1265  docker save -o git-up-curl-apache-systemctl.tar git-up-curl-apache-systemctl
+ 1266  ls
+ 1267  docker ps -a
+ 1268  docker stop 003071a3fdf7 84b731f9917c
+ 1269  clear
+ 1270  docker rm  003071a3fdf7 84b731f9917c
+ 1271  cleatr
+ 1272  clear
+ 1273  docker images
+ 1274  docker rmi git-up-curl-apache-systemctl
+ 1275  docker images
+ 1276  ls
+ 1277  docker load -i git-up-curl-apache-systemctl.tar
+ 1278  docker images
+ 1279  history
+
+
+- Using Public Registry
+Step -1 - Register to hub.docker.com
+Step - 2 - Validation and Login
+Step 3 - Create a repo
+Step 4 - Local Image rename to match a repo of docker hub.com
+Step 5 - docker login
+Step 6 - docker push 
+
+
+ 1281  docker images
+ 1282  docker tag git-up-curl-apache-systemctl devopsschools/lnmay2020
+ 1283  docker images
+ 1284  cler
+ 1285  clear
+ 1286  docker login
+ 1287  w
+ 1288  clear
+ 1289  who
+ 1290  clear
+ 1291  docker logout
+ 1292  docker login
+ 1293  docker login
+ 1294  docker images
+ 1295  docker push devopsschools/lnmay2020
+
+
+- Using Private Registry
+
+
+Method 2 - Using Dockerfile
+
+
+
+
+
+
+
+
 
 
 
