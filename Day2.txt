@@ -150,4 +150,32 @@ Amruta Babbannavar		13.232.4.236
 Srikanta Pradhan		13.235.17.13
 Bhaskar Ganesh			13.235.16.189
 MADHUSHREE			13.235.95.21	
+=============================================================
+Image has one of multiple layers  DONE
+Each layer is file system		DONE
+Bottom layer is rootfs			DONE
+Other layers are changes on top of it 	DONE
+Container is nothing but empty and WRITEABLE filesystem
+
+Higher layers always win when there is conflicts in Layers
+==
+When you create a container and run it ---ALL LAYERS OF Image get merged into ONE Layer (Writeable) and Mounted to USER NAMESPACE...
+==============================================================
+1218  docker images
+ 1219  docker history ubuntu
+ 1220  docker inspect ubuntu
+
+dcoker rmi docker images
+
+/var/lib/docker/overlay2
+df -kh
+watch ls
+
+
+
+
+
+
+
+
 
