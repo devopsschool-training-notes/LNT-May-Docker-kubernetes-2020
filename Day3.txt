@@ -170,3 +170,78 @@ https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep
 ==================================
 Step 1- Create a bridget network and assign to ONE ubuntu container
 Step 2 - Create a volume and use it in container and validate
+================================================================
+Solution -  Docker Compose ----> Yaml
+
+Services
+	Service1
+		build - dockerfile
+		image - imagename
+		env - 
+		port
+		volume
+		netw
+		dependency
+	Service2
+		build
+		image
+		env
+		port
+		volum
+		netw
+	Service3
+		build
+		image
+		env
+		port
+		volum
+		netw
+	Service4
+=================================================================
+docker-compose build 
+docker-compose up -d
+docker-compose logs
+docker-compose ps
+docker-compose stop
+docker-compose rm
+
+
+
+
+version: '2'
+
+services:
+  wordpress:
+    image: wordpress:4.5
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    restart: always
+
+  db:
+    image: mariadb:10.1
+    volumes:
+      - "./volumes/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+
+
+
+
+
+
+
+
+
