@@ -1,0 +1,172 @@
+35.154.138.192
+=============================
+- Docker networking
+- Docker Volumes
+- Docker Compose
+- Communication between containers at docker level
+===============================================
+- Docker networking
+	- Bridge
+	- Host only
+	- None
+
+- Docker Volumes
+	- volume	/var/lib/docker/volumes
+	- host		Any place in host machine mounted from ext
+	- memory	memory
+https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep-dive-level/
+
+ 1000  docker network
+ 1001  docker network ls
+ 1002  clear
+ 1003  ifconfig
+ 1004  docker network ls
+ 1005  docker network inspect bridge
+ 1006  docker network ls
+ 1007  docker network inspect ec2-user_default
+ 1008  ifconfig
+ 1009  clear
+ 1010  docker network ls
+ 1011  docker network remove ec2-user_default
+ 1012  docker network ls
+ 1013  docker network remove bridge
+ 1014  docker network create dev
+ 1015  docker network ls
+ 1016  docker network inspect dev
+ 1017  docker network ls
+ 1018  clear
+ 1019  docker run -itd ubuntu
+ 1020  docker ps
+ 1021  docker inspect ef10cbb40eae
+ 1022  docker network ls
+ 1023  ifconfig
+ 1024  docker run -itd ubuntu
+ 1025  ifconfig
+ 1026  clear
+ 1027  docker run -itd --net=dev ubuntu
+ 1028  docker ps
+ 1029  docker inspect 5630effd499b
+ 1030  clear
+ 1031  ls
+ 1032  docker ps
+ 1033  docker network ls
+ 1034  docker network connect 19debcb28289 5630effd499b
+ 1035  docker inspect 5630effd499b
+ 1036  clear
+ 1037  docker network disconnect 19debcb28289 5630effd499b
+ 1038  docker inspect 5630effd499b
+ 1039  clear
+ 1040  docker network
+ 1041  docker network ls
+ 1042  clear
+ 1043  docker run -itd --net=host --name=host ubuntu
+ 1044  docker ps
+ 1045  docker inspect ba484d985f99
+ 1046  clear
+ 1047  docker attach ba484d985f99
+ 1048  clear
+ 1049  ifconfig
+ 1050  clear
+ 1051  docker ps
+ 1052  docker exec 5630effd499b touch /opt/devopsschool.txt
+ 1053  docker exec 5630effd499b ls /opt
+ 1054  cd /var/lib/docker
+ 1055  find . -name devopsschool.txt
+ 1056  docker stop 5630effd499b
+ 1057  docker rm 5630effd499b
+ 1058  find . -name devopsschool.txt
+ 1059  clear
+ 1060  ls
+ 1061  cd volumes/
+ 1062  ls
+ 1063  pwd
+ 1064  clear
+ 1065  pwd
+ 1066  clear
+ 1067  ls
+ 1068  cd 4f338662ba4c3d0b413fba4185b498baca192d21e42a14a05e175e732f42fac3
+ 1069  ls
+ 1070  cd _data/
+ 1071  ls
+ 1072  clear
+ 1073  ls
+ 1074  cd ..
+ 1075  ls
+ 1076  cd ..
+ 1077  ls
+ 1078  clear
+ 1079  docker volume
+ 1080  docker volume prune
+ 1081  clear
+ 1082*
+ 1083  docker volume prune
+ 1084  ls
+ 1085  clear
+ 1086  docker ps -a
+ 1087  clear
+ 1088  docker stop $(docker ps -a -q)
+ 1089  docker rm $(docker ps -a -q)
+ 1090  clear
+ 1091  docker ps
+ 1092  docker ps -a
+ 1093  ls
+ 1094  docker volume prune
+ 1095  clear
+ 1096  ls
+ 1097  docker volume create dev1
+ 1098  docker volume create dev2
+ 1099  clear
+ 1100  ls
+ 1101  cd dev1
+ 1102  ls
+ 1103  cd _data/
+ 1104  ls
+ 1105  pwd
+ 1106  ls
+ 1107  watch ls
+ 1108  ls
+ 1109  touch fdsfsdf
+
+
+ 1000  docker run -itd -v dev1:/opt/raju ubuntu
+ 1001  docker ps
+ 1002  docker exec d22d12e104d2 df -kh
+ 1003  docker exec d22d12e104d2 touch /opt/raju/rr
+ 1004  docker exec d22d12e104d2 touch /opt/raju/rrddd
+ 1005  docker exec d22d12e104d2 touch /opt/raju/rrddddddd
+ 1006  docker exec d22d12e104d2 ls /opt/raju/
+ 1007  clear
+ 1008  docker ps
+ 1009  docker stop d22d12e104d2
+ 1010  docker rm d22d12e104d2
+ 1011  docker run -itd -v dev1:/opt/raju ubuntu
+ 1012  docker ps
+ 1013  docker exec 726f862db8ff ls /opt/raju
+ 1014  clear
+ 1015  ls
+ 1016  cd /opt/
+ 1017  ls
+ 1018  mkdir backup
+ 1019  pwd
+ 1020  ls
+ 1021  docker run -itd -v /opt/backcup:/opt/raju ubuntu
+ 1022  docker ls
+ 1023  docker ps
+ 1024  docker exec d9a0b141bbc1 touch /opt/raju/fff
+ 1025  clear
+ 1026  ls
+ 1027  cd back
+ 1028  cd backup/
+ 1029  ls
+ 1030  pwd
+ 1031  history
+ 1032  ls
+ 1033  clear
+ 1034  ls
+ 1035  cd ..
+ 1036  ls
+ 1037  cd backcup
+ 1038  ls
+==================================
+Step 1- Create a bridget network and assign to ONE ubuntu container
+Step 2 - Create a volume and use it in container and validate
