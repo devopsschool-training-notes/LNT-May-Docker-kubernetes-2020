@@ -423,8 +423,108 @@ spec:
 WORKSTATION - 13.233.116.86
 User - ec2-user
 
+=======================================
+how to show all the fields of all objects
+
+ 169  clear
+  170  kubectl explain pods
+  171  kubectl explain pods.spec
+  172  kubectl explain pods.spec.containers
+
+=======================================
+How to use PODS?
 
 
+ 166  kubectl get pods -n=rajesh
+  167  clear
+  168  kubectl
+  169  clear
+  170  kubectl explain pods
+  171  kubectl explain pods.spec
+  172  kubectl explain pods.spec.containers
+  173  history
+  174  clear
+  175  kubectl get pods -n=rajesh
+  176  kubectl get pods -n=rajesh -o wide
+  177  curl http://10.44.0.12
+  178  clear
+  179  kubectl get pods -n=rajesh
+  180  kubectl logs hello-pod  -n=rajesh
+  181  curl http://10.44.0.12
+  182  clear
+  183  kubectl logs hello-pod  -n=rajesh
+  184  kubectl exec -it hello-pod /bin/bash
+  185  clear
+  186  kubectl exec -it hello-pod /bin/bash -n=rajesh
+  187  kubectl attach hello-pod  -n=rajesh
+  188  clear
+  189  kubectl
+  190  clear
+  191  kubectl describe pod hello-pod -n=rajesh
+  192  kubectl
+  193  clear
+  194  ls
+  195  kubectl cp -h
+  196  clear
+  197  ls
+  198  touch devopsschool.txt
+  199  kubectl cp devopsschool.txt hello-pod:/opt
+  200  kubectl cp devopsschool.txt hello-pod:/opt -n=rajesh
+  201  kubectl exec hello-pod ls /opt -n=rajesh
+
+
+=======================================
+ReplicationController
+=============================
+Image
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctr
+        image: scmgalaxy/nginx-devopsschoolv1
+        ports:
+        - containerPort: 80
+
+
+Replication  --> ONE POD TO MANY
+ 219  kubectl create -f rc.yaml -n=rajesh
+  220  kubectl get rc -n=rajesh
+  221  kubectl get pods -n=rajesh
+  222* vi rc.yaml
+  223  kubectl apply -f rc.yaml -n=rajesh
+  224  kubectl get pods -n=rajesh
+  225  clear
+  226  kubectl get pods -n=rajesh
+  227  clear
+  228  kubectl get pods -n=rajesh
+  229  clear
+  230  kubectl get pods -n=rajesh
+  231  kubectl edit rc hello-rc -n=rajesh
+  232  kubectl get pods -n=rajesh
+  233  clear
+  234  kubectl get pods -n=rajesh
+
+
+Controller --> DESIRE NUMBER MUST BE ACtUAL NUM
+
+
+  237  kubectl get pods -n=rajesh
+  238  kubectl delete pod hello-rc-qr5rp -n=rajesh
+  239  kubectl get pods -n=rajesh
+  240  history
 
 
 
