@@ -1,0 +1,121 @@
+Master
+	API Server --> POD -> Container(S) -> Image --> Google Registry ->
+	Clustor Store ETCD --> POD -> Container(S) -> Image --> Google Registry ->
+	Schedular --> POD -> Container(S) -> Image --> Google Registry ->
+	Controller--> POD -> Container(S) -> Image --> Google Registry ->
+	
+	kubelet		
+	Container Engine	
+	Kube Proxy --> POD -> Container(S) -> Image --> Google Registry ->
+Worker
+	kubelet	
+	Container Engine
+	Kube Proxy --> POD -> Container(S) -> Image --> Google Registry ->
+Workstation
+	Kubectl
+
+Desire --> Declare in YAML
+==============================
+POD -> Container(S) -> Image --> Registry ->
+Replication Controller 
+Deployment
+Services
+	
+
+Single Node Clustor
+==============================
+- minikube
+https://www.devopsschool.com/tutorial/kubernetes/minikube-installation-procedures.html
+https://www.devopsschool.com/tutorial/kubernetes/minikube-commands-reference.html
+https://www.devopsschool.com/videos/593/kubernetes-advance-tutorial-for-beginners-with-demo-2020-minikube-part-01-by-devopsschool/
+https://www.devopsschool.com/videos/464/kubernetes-advance-tutorial-for-beginners-with-demo-2020-minikube-part-02-by-devopsschool/
+
+Hardway
+==============================
+https://github.com/kelseyhightower/kubernetes-the-hard-way
+
+Manual Way
+==============================
+Kubeadm [OFFICIAL WAY]
+
+Managed Clustor to Cloud Providor
+=============================
+AWS 	-> EKS
+Google  -> GKE
+Azure	-> AKS
+
+YOU WANT TO MANAGE YOUR OWN CLUSTOR BUT Integration with CLOUD SERVICES
+================
+KOPS
+https://github.com/kubernetes/kops
+https://www.devopsschool.com/videos/show/kops?type=video
+
+Manual Way
+==============================
+Kubeadm [OFFICIAL WAY]
+===================================================
+https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
+13.233.116.86
+
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.15.187:6443 --token 3yh47f.wi7qj1g5pqv6ptvf \
+    --discovery-token-ca-cert-hash sha256:b092c23e10acd1f0a0cd3e1fe1cd3aff0931d5a7d629a3d6b11d9c04aa973465
+
+
+======================================================
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+====================================================
+Setting up a Workstation
+
+kubectl	--> config
+		$HOME/.kube/config
+		CURR_DIR/.kube/config
+
+
+		config
+			YAML FORMAT
+			CLUSTOR(S)	
+				CLUSTOR1 - API SERVER Addresss
+				CLUSTOR2 - API SERVER Addresss
+				CLUSTOR3 - API SERVER Addresss
+			USER(S)
+				USER 1 - Certificates
+				USER 2 - Certificates
+				USER 3 - Certificates
+			Context(S)
+				Context 1 = CLUSTOR1 + USER 3
+				Context 2 = CLUSTOR2 + USER 1	
+				Context 3 = CLUSTOR3 + USER 2
+			CURR-CONTEXT
+				Context 1 OR Context 2 OR Context 3
+
+				API SERVER Addresss
+				USER
+				Certificates
+=================================================================================
+
+
+
+
+
+
+
+
+
