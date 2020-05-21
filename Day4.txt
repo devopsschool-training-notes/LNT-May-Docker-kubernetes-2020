@@ -525,6 +525,188 @@ Controller --> DESIRE NUMBER MUST BE ACtUAL NUM
   238  kubectl delete pod hello-rc-qr5rp -n=rajesh
   239  kubectl get pods -n=rajesh
   240  history
+====================================================================
+Deployment
+	Replication
+	Controller
+	versioning
+	Rollout
+	Rollback
+
+
+  267  kubectl create -h
+  268  clear
+  269  kubectl create deployment -h
+
+
+kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1
+kubectl scale --replicas=5 deployment/my-dep
+
+267  kubectl create -h
+  268  clear
+  269  kubectl create deployment -h
+  270  history
+  271  clear
+  272  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1
+  273  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  274  kubectl get pods -n=rajesh
+  275  kubectl delete rc hello-rc
+  276  kubectl delete rc hello-rc -n=rajesh
+  277  kubectl delete pod hello-pod -n=rajesh
+  278  kubectl get pods -n=rajesh
+  279  clear
+  280  kubectl edit deploy my-dep -n=rajesh
+  281  kubectl get pods -n=rajesh
+  282  kubectl
+  283  clear
+  284  kubectl scale -h
+  285  clear
+  286  kubectl get pods -n=rajesh
+  287  kubectl scale --replicas=5 deployment/my-dep
+  288  kubectl get pods -n=rajesh
+  289  kubectl scale --replicas=5 deployment/my-dep -n=rajesh
+  290  kubectl get pods -n=rajesh
+  291  clear
+  292  ls
+  293  cd rajesh/
+  294  ls
+  295  kubectl get deploy -n=rajesh
+  296  kubectl get deploy -o yaml -n=rajesh
+  297  kubectl get deploy -o yaml --export -n=rajesh
+  298  clear
+  299  kubectl get deploy -o yaml --export -n=rajesh >> dep1.yaml
+  300  ls
+  301  more dep1.yaml
+  302  vi dep1.yaml
+  303  clear
+  304  ls
+  305  kubectl get deploy -n=rajesh
+  306  kubectl apply -f dep1.yaml
+  307  kubectl get deploy -n=rajesh
+  311  kubectl get pod -n=rajesh
+  312  kubectl delete pod my-dep-76767c79f-2fwfp my-dep-76767c79f-2lsbq -n=rajesh
+  313  kubectl get pod -n=rajesh
+  314  clear
+  315  ls
+  316  kubectl get pod -n=rajesh -o wide
+  317  clear
+  318  kubectl
+  319  clear
+  320  kubectl rollout -h
+  321  history
+  322  kubectl rollout -h
+
+
+Available Commands:
+  history     View rollout history
+  pause       Mark the provided resource as paused
+  restart     Restart a resource
+  resume      Resume a paused resource
+  status      Show the status of the rollout
+  undo        Undo a previous rollout
+
+--------------------------------------------------
+kubectl rollout history deploy my-dep -n=rajesh
+kubectl rollout status deploy my-dep -n=rajesh
+  362  kubectl get pods -n=rajesh
+  363  kubectl get pods -n=rajesh -o wide
+  364  curl http://10.47.0.8
+# rollout scmgalaxy/nginx-devopsschoolv2
+kubectl edit deploy my-dep -n=rajesh
+# kubectl scale --replicas=50 deployment/my-dep -n=rajesh
+kubectl rollout pause deploy my-dep -n=rajesh
+kubectl rollout status deploy my-dep -n=rajesh
+kubectl rollout resume deploy my-dep -n=rajesh
+kubectl rollout restart deploy my-dep -n=rajesh
+kubectl rollout status deploy my-dep -n=rajesh
+kubectl rollout history deploy my-dep -n=rajesh
+kubectl rollout undo deploy my-dep --to-revision=1 -n=rajesh
+--------------------------------------------------
+
+
+
+ 323  history
+  324  kubectl rollout history deploy my-dep
+  325  kubectl rollout status deploy my-dep
+  326  clear
+  327  kubectl get pods --all-namespaces | wc -l
+  328  kubectl get pods --all-namespaces
+  329  clear
+  330  kubectl get pods --all-namespaces
+  331* kubectl get pods --all-namespaces
+  332  kubectl get pods --all-namespaces | wc -l
+  333  clear
+  334  ls
+  335  kubectl get pods --all-namespaces | wc -l
+  336  kubectl get pods --all-namespaces
+  337  kubectl get pods --all-namespaces | wc -l
+  338  kubectl get rc
+  339  kubectl get deploy
+  340  kubectl delete deploy my-dep
+  341  kubectl get deploy
+  342  kubectl get deploy -n=usah
+  343  kubectl get deploy -n=uha
+  344  kubectl get deploy -n=usha
+  345  kubectl get rc -n=usha
+  346  kubectl delete rc hello-rc -n=usha
+  347  kubectl get rc -n=usha
+  348  kubectl get pods --all-namespaces | wc -l
+  349  kubectl get pods --all-namespaces
+  350  kubectl get rc -n=tanishq
+  351  kubectl delete rc nginx -n=tanishq
+  352  kubectl get rc -n=tanishq
+  353  clear
+  354  ls
+  355  kubectl rollout history deploy my-dep -n=rajesh
+  356  kubectl rollout status deploy my-dep -n=rajesh
+  357  ls
+  358  kubectl edit deploy my-dep -n=rajesh
+  359  kubectl get pods -n=rajesh
+  360  kubectl delete deploy my-dep2 -n=rajesh
+  361  clear
+  362  kubectl get pods -n=rajesh
+  363  kubectl get pods -n=rajesh -o wide
+  364  curl http://10.47.0.8
+  365  history
+  366  kubectl edit deploy my-dep -n=rajesh
+  367  kubectl rollout status deploy my-dep -n=rajesh
+  368  kubectl rollout history deploy my-dep -n=rajesh
+  369  kubectl scale --replicas=50 deployment/my-dep -n=rajesh
+  370  kubectl rollout status deploy my-dep -n=rajesh
+  371  kubectl rollout pause deploy my-dep -n=rajesh
+  372  kubectl rollout status deploy my-dep -n=rajesh
+  373  kubectl rollout restart deploy my-dep -n=rajesh
+  374  kubectl rollout resume deploy my-dep -n=rajesh
+  375  kubectl rollout restart deploy my-dep -n=rajesh
+  376  kubectl rollout status deploy my-dep -n=rajesh
+  377  clear
+  378  ls
+  379  kubectl get deploy -n=rajesh
+  380  kubectl rollout history deploy my-dep -n=rajesh
+  381  kubectl get pods -n=rajesh
+  382  kubectl get pods -n=rajesh -o wide
+  383  curl http://10.44.0.47
+  384  clear
+  385  ls
+  386  kubectl get pods --all-namespaces | wc -l
+  387  curl http://10.44.0.47
+  388  kubectl rollout history deploy my-dep -n=rajesh
+  389  kubectl rollout undo -h
+  390  clear
+  391  kubectl rollout undo deploy my-dep --to-revision=1
+  392  kubectl rollout undo deploy my-dep --to-revision=1 -n=rajesh
+  393  kubectl rollout status deploy my-dep -n=rajesh
+  394  kubectl get pods -n=rajesh
+  395  kubectl get pods -n=rajesh -o wide
+  396  curl http://10.47.0.17
+  397  kubectl get pods -n=rajesh
+  398  kubectl delete deploy my-dep -n=rajesh
+  399  kubectl get pods -n=rajesh
+  400  clear
+  401  kubectl get pods -n=rajesh
+  402  clear
+  403  kubectl get pods -n=rajesh
+  404  history
 
 
 
