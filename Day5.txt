@@ -90,5 +90,201 @@ service scope
  1057  kubectl get svc -n=rajesh
  1058  curl http://10.103.162.223:5678
  1059  kubectl get svc -n=rajesh
+==================================================================
+kubectl create service loadbalancer lb --tcp=5678:80 -n=rajesh
 
+Image
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+=========================================
+ 1001  cp pod.yaml pod1.yaml
+ 1002  vi pod1.yaml
+ 1003  kubectl create -f pod1.yaml -n=rajesh
+ 1004  clear
+ 1005  kubectl get svc -n=rajesh
+ 1006  kubectl describe svc lb -n=rajesh
+ 1007  kubectl get svc -n=rajesh
+ 1008  clear
+ 1009  kubectl get svc -n=rajesh
+ 1010  curl http://10.108.66.209:5678
+ 1011  clear
+ 1012  ls
+ 1013  kubectp apply -f pod.yaml
+ 1014  kubectl apply -f pod.yaml
+ 1015  clear
+ 1016  kubectl get svc -n=rajesh
+ 1017  curl http://10.108.66.209:5678
+ 1018  lear
+ 1019  clear
+ 1020  curl http://10.108.66.209:5678
+ 1021  vi pod.yaml
+ 1022  vi pod1.yaml
+ 1023  clear
+ 1024  kubectl get pods -n=rajesh
+ 1025  kubectl describe pod hello-pod -n=rajesh
+ 1026  kubectl describe pod hello-pod1 -n=rajesh
+ 1027  clear
+ 1028  ls
+ 1029  kubectl apply -f pod.yaml -n=rajesh
+ 1030  kubectl describe pod hello-pod -n=rajesh
+ 1031  clear
+ 1032  history
+ 1033  clear
+ 1034  ls
+ 1035  kubectl get pods -n=rajesh
+ 1036  curl http://10.108.66.209:5678
+ 1037  clear
+ 1038  curl http://10.108.66.209:5678
+ 1039  clear
+ 1040  ls
+ 1041  kubectl get svc -n=rajesh
+
+============================================================
+			Kubernetes Volume
+===============================================================
+			Kubernetes 
+
+COMPUTE		STORAGE		NETWORK		SECURITY	
+
+POD		HostPath 		
+RC		NFS
+DEPLOY
+DS
+SS
+
+https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
+
+STORAGE TYPES
+		BLOCK 			EBS	AzureDisk
+		OBJECT			S3	AzureFile	
+		NETWORK STORAGE		EFS
+
+Kubernets ---> CLOUD
+=====================================================================
+Step 1 - First Let Kubernets know storage is available. - BY k8 ADMIN
+			---> Volume plugins
+Step 2 - Create  a multiple PV of multiple type - BY k8 ADMIN
+
+Step 3 - PVC - Claim a PV
+
+Step 4 - Use/Mount in POD
+
+Step 5 - Mount inside a container
+https://www.devopsschool.com/blog/persistentvolume-persistentvolumeclaim-volumes-using-hostpath/	
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: hostpath
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchostpath
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchostpath1
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: hostpath1
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
+
+
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: task-pv-pod
+spec:
+  containers:
+    - name: task-pv-container
+      image: scmgalaxy/nginx-devopsschoolv1
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: pvchostpath1
+
+ 1047  vi pv.yaml
+ 1048  kubectl create -f pv.yaml -n=rajesh
+ 1049  kubectl get pv
+ 1050  kubectl get pv -n=rajesh
+ 1051  kubectl get pvc
+ 1052  kubectl get pvc -n=rajesh
+ 1053  clear
+ 1054  ls
+ 1055  vi pvc.yaml
+ 1056  kubectl create -f pvc.yaml -n=rajesh
+ 1057  kubectl get pvc -n=rajesh
+ 1058  kubectl get pv -n=rajesh
+ 1059  clear
+ 1060  ls
+ 1061  vi pvc1.yaml
+ 1062  kubectl create -f pvc1.yaml -n=rajesh
+ 1063  kubectl get pvc -n=rajesh
+ 1064  kubectl get pv -n=rajesh
+ 1065  vi pv1.yaml
+ 1066  kubectl create -f pv1.yaml
+ 1067  kubectl get pv -n=rajesh
+ 1068  kubectl get pvc -n=rajesh
+ 1069  kubectl get pv -n=rajesh
+ 1070  kubectl get pvc -n=rajesh
+ 1071  clear
+ 1072  vi pv-pvc-pod.yaml
+ 1073  kubectl create -f pv-pvc-pod.yaml -n=rajesh
+ 1074  kubectl get pod -n=rajesh
+ 1075  kubectl get pod -n=rajesh -o wide
+ 1076  curl http://10.44.0.89
+ 1077  kubectl delete -f pv-pvc-pod.yaml -n=rajesh
+ 1078  kubectl create -f pv-pvc-pod.yaml -n=rajesh
+ 1079  kubectl get pod -n=rajesh -o wide
+ 1080  kubectl delete -f pv-pvc-pod.yaml -n=rajesh
+ 1081  kubectl create -f pv-pvc-pod.yaml -n=rajesh
+ 1082  kubectl get pod -n=rajesh -o wide
+ 1083  curl http://10.47.0.84
+ 1084  history
 
