@@ -1,0 +1,94 @@
+Workstation
+===============================
+13.127.154.202
+
+WORKER
+52.66.106.215
+13.232.36.135
+
+Services
+----------
+Volume
+----------
+Security
+----------
+AKS - EKS
+
+Services
+===============================================
+- Loadbalance PODS
+
+How it works?
+- Though lebels of PODs and Services*
+
+====================================
+Service Scope
+	- Limited to Clustor only - clusterip
+	- Where clusterip is port forward to port of Node - NodePort
+								clusterip
+	- loadbalancer
+		clusterip -> 	NodePort -> loadbalancer
+
+
+kubectl create service clusterip vmy-cs --tcp=5678:80 -n=rajesh
+kubectl create service nodeport rajnodeport --tcp=5678:80 -n=rajesh
+
+ 1007  kubectl create service -h
+ 1008  kubectl create service clusterip
+ 1009  kubectl create service clusterip -h
+ 1010  clear
+ 1011  kubectl get svc
+ 1012  kubectl get svc -n=rajesh
+ 1013  kubectl create service loadbalancer vmy-cs --tcp=5678:80 -n=rajesh
+ 1014  kubectl get svc -n=rajesh
+ 1015  kubectl delete svc vmy-cs -n=rajesh
+ 1016  clear
+ 1017  kubectl create service clusterip vmy-cs --tcp=5678:80 -n=rajesh
+ 1018  kubectl get svc -n=rajesh
+ 1019  ping 10.100.72.251
+ 1020  kubectl get pod -n=rajesh
+ 1021  ls
+ 1022  kubectl create -f pod.yaml -n=rajesh
+ 1023  kubectl get pod -n=rajesh
+ 1024  clear
+ 1025  kubectl get pod -n=rajesh
+ 1026  kubectl get pod -n=rajesh --show-lables
+ 1027  kubectl get pod -n=rajesh --show-labels
+ 1028  kubectl get svc -n=rajesh
+ 1029  kubectl describe svc vmy-cs -n=rajesh
+ 1030  kubectl edit svc vmy-cs -n=rajesh
+ 1031  kubectl get pod -n=rajesh --show-labels
+ 1032  kubectl describe svc vmy-cs -n=rajesh
+ 1033  kubectl edit svc vmy-cs -n=rajesh
+ 1034  kubectl describe svc vmy-cs -n=rajesh
+ 1035  curl http://10.100.72.251
+ 1036  curl http://10.100.72.251:5678
+===============================================================
+
+service scope
+		Inside CLUSTOR - clusterip
+		At NODE - NodePort 
+
+
+ 1040  kubectl create service NodePort rajnode --tcp=5678:80 -n=rajesh
+ 1041  kubectl create service -h
+ 1042  kubectl create service nodeport -h
+ 1043  clear
+ 1044  kubectl create service nodeport rajnodeport --tcp=5678:80 -n=rajesh
+ 1045  kubectl edit svc vmy-cs -n=rajesh
+ 1046  kubectl get svc -n=rajesh
+ 1047  kubectl describe svc rajnodeport -n=rajesh
+ 1048  vi pod.yaml
+ 1049  kubectl edit svc rajnodeport -n=rajesh
+ 1050  clear
+ 1051  kubectl describe svc rajnodeport -n=rajesh
+ 1052  kubectl get pod -n=rajesh --show-labels
+ 1053  kubectl apply -f pod.yaml -n=rajes
+ 1054  kubectl apply -f pod.yaml -n=rajesh
+ 1055  kubectl describe svc rajnodeport -n=rajesh
+ 1056  kubectl get pod -n=rajesh --show-labels
+ 1057  kubectl get svc -n=rajesh
+ 1058  curl http://10.103.162.223:5678
+ 1059  kubectl get svc -n=rajesh
+
+
