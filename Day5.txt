@@ -287,4 +287,163 @@ spec:
  1082  kubectl get pod -n=rajesh -o wide
  1083  curl http://10.47.0.84
  1084  history
+==========================================================
+deployment          Create a deployment with the specified name.
+namespace           Create a namespace with the specified name
+
+secret              Create a secret using specified subcommand
+configmap           Create a configmap from a local file, directory or literal value
+
+
+  
+  
+
+  cronjob             Create a cronjob with the specified name.
+ 
+  job                 Create a job with the specified name.
+
+  poddisruptionbudget Create a pod disruption budget with the specified name.
+  priorityclass       Create a priorityclass with the specified name.
+  quota               Create a quota with the specified name.
+  
+  
+
+  service             Create a service using specified subcommand.
+  
+
+
+
+PV
+PVC
+------------------
+ConfigMap
+Secrets
+
+
+
+Authentication
+https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+ - X509 Client Certs		-------
+ - Static Token File
+ - Static Password File
+ - Service Account Tokens
+ - OpenID
+ - Webhook Token Authentication
+
+Authorization
+	ABAB
+	RBAC
+	Role Based Access Control
+	
+	Access AKA priv Types
+               - create
+                - get
+                - delete
+                - list
+                - update
+                - edit
+                - watch
+                - exec
+	User Types
+		Normal  -- For Human
+		ServiceAccount --- System or Ops
+
+	Role Type
+		ClustorRole
+		Role
+
+serviceaccount      Create a service account with the specified name	
+
+role                Create a role with single rule.
+clusterrole         Create a ClusterRole.
+
+rolebinding         Create a RoleBinding for a particular Role or ClusterRole
+clusterrolebinding  Create a ClusterRoleBinding for a particular ClusterRole
+
+
+sa.yaml
+---------------
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tecnotree-admin
+
+kubectl create -f sa.yaml
+kubectl get sa -A | grep tec
+kubectl get secrets
+
+
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  namespace: rajesh
+  name: cr-rajesh
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["deployments", "replicasets", "pods"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
+
+
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: tecnotree-cr-binding3
+subjects:
+- kind: ServiceAccount
+  name: tecnotree-admin
+  namespace: rajesh
+roleRef:
+  kind: ClusterRole
+  name: cr-rajesh
+  apiGroup: rbac.authorization.k8s.io
+
+
+==================================================
+
+openssl x509 -req -in employee.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /home/ec2-user/rajesh/rbac/employee.crt -days 500
+
+
+
+======USER At LAPTOP==================
+kubectl config set-credentials employee --client-certificate=/home/ec2-user/rajesh/rbac/employee.crt  --client-key=/home/ec2-user/rajesh/rbac/employee.key
+
+kubectl config set-context employee-context --cluster=kubernetes --namespace=rajesh --user=employee
+
+kubectl get pods --context=employee-context
+
+
+
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  namespace: rajesh
+  name: deployment-manager
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["deployments", "replicasets", "pods"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
+
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: deployment-manager-binding
+  namespace: rajesh
+subjects:
+- kind: User
+  name: employee
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: deployment-manager
+  apiGroup: ""
+
+==================================================
+
+
+
+
+
+
 
