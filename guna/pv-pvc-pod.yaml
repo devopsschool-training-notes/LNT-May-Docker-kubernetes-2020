@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: guna-pv-pod
+spec:
+  containers:
+    - name: guna-pv-container
+      image: scmgalaxy/nginx-devopsschoolv1
+      ports:
+        - containerPort: 80
+          name: "http-server1"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: guna-pv-storage
+  volumes:
+    - name: guna-pv-storage
+      persistentVolumeClaim:
+        claimName: pvc-hostpath-guna
+

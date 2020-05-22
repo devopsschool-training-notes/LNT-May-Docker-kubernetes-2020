@@ -1,0 +1,11 @@
+piVersion: v2
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchostpathmadhu
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

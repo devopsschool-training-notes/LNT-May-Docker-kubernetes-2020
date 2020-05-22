@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod-usha
+  labels: 
+    app: webserver2020
+spec:
+  containers:
+  - name: hello-ltts
+    image: nginx
+    ports:
+    - containerPort: 80

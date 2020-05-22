@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: test-rs
+  namespace: mayank
+  labels:
+    app: test-rS
+spec: 
+  replicas: 5 
+  selector:
+    matchLabels:
+      app: test-rS
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: test-rS
+    spec:
+      containers:
+      - name: test-rc-nginx-container
+        image: nginx
+        ports:
+        - containerPort: 80

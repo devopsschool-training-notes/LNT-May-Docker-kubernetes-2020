@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mayank-nginx-pod
+  namespace: mayank
+  labels:
+    app: web-service-pod
+    svc: nginx-svc-mayank
+    nodeSvc: nginx-nodeSvc-mayank
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    ports:
+    - containerPort: 80

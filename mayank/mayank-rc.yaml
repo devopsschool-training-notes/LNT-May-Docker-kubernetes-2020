@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: test-rc
+  namespace: mayank
+  labels:
+    app: test-rC
+spec: 
+  replicas: 3
+  selector:
+    app: test-rC
+  template:
+    metadata:
+      name: test-rc-nginx-pod
+      labels:
+        app: test-rC
+    spec:
+      containers:
+      - name: test-rc-nginx-container
+        image: nginx
+        ports:
+        - containerPort: 80

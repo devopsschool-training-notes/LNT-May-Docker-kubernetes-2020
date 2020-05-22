@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod-ajay1
+  labels: 
+    app1: ajaynodeport
+spec:
+  containers:
+  - name: hello-ctr-ajay
+    image: scmgalaxy/nginx-devopsschoolv2 
+    ports:
+    - containerPort: 80
+  - name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: pvchostpath1
