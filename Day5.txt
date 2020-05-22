@@ -440,9 +440,20 @@ roleRef:
   apiGroup: ""
 
 ==================================================
+Notes 		https://github.com/devopsschool-training-notes/LNT-May-Docker-kubernetes-2020
+Tutorials	https://www.devopsschool.com/tutorial/
+Blogs		https://www.devopsschool.com/blog/		
+Sample Programs	https://www.devopsschool.com/blog/devopsschool-github-referenece/
+Videos
+		https://www.devopsschool.com/videos/
+		https://www.devopsschool.com/video/
+		https://www.youtube.com/TheDevOpsSchool
+Slides
+		https://www.devopsschool.com/slides
+		https://www.devopsschool.com/pdf/
 
-
-
+How to reach out to me?
+	http://rajeshkumar.xyz/
 
 
 
